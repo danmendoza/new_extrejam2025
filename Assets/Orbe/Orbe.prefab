@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6837083298500978225}
   - component: {fileID: 720120323594534701}
   - component: {fileID: 8392272743416344734}
+  - component: {fileID: 6438910507547886370}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -149,6 +150,28 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.19, y: 1.53}
   m_EdgeRadius: 0
+--- !u!95 &6438910507547886370
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 618939551285244084}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 512818d857807d141a9ef1f3ac57cd9c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7019236056486910988
 GameObject:
   m_ObjectHideFlags: 0

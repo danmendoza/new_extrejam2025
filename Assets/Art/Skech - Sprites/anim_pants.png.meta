@@ -1,0 +1,650 @@
+fileFormatVersion: 2
+guid: cff228dc0317ea44fa330645fb898f33
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 690858856857582602
+    second: anim_pants_0
+  - first:
+      213: 6143696155299228165
+    second: anim_pants_1
+  - first:
+      213: 1992616865753804413
+    second: anim_pants_2
+  - first:
+      213: -1584792790267976270
+    second: anim_pants_3
+  - first:
+      213: 3512702752437109377
+    second: anim_pants_4
+  - first:
+      213: -1377269519257670741
+    second: anim_pants_5
+  - first:
+      213: -7136594418279290666
+    second: anim_pants_6
+  - first:
+      213: 7155392776409490186
+    second: anim_pants_7
+  - first:
+      213: -1626411287741647526
+    second: anim_pants_8
+  - first:
+      213: 3347778466170736507
+    second: anim_pants_9
+  - first:
+      213: 1891451081143946417
+    second: anim_pants_10
+  - first:
+      213: -4872735415690994973
+    second: anim_pants_11
+  - first:
+      213: -5280480229255146332
+    second: anim_pants_12
+  - first:
+      213: -5699090545704797284
+    second: anim_pants_13
+  - first:
+      213: -8270938463226014624
+    second: anim_pants_14
+  - first:
+      213: 1144409092052008724
+    second: anim_pants_15
+  - first:
+      213: 2376540632365173757
+    second: anim_pants_16
+  - first:
+      213: 3394481381766895974
+    second: anim_pants_17
+  - first:
+      213: -4166214999004937596
+    second: anim_pants_18
+  - first:
+      213: 2581718758295985923
+    second: anim_pants_19
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: anim_pants_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 511
+        width: 153
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0cbde0587c669900800000000000000
+      internalID: 690858856857582602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 767
+        width: 155
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50a2b804a1bc24550800000000000000
+      internalID: 6143696155299228165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_2
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 767
+        width: 155
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7e25b86b7237ab10800000000000000
+      internalID: 1992616865753804413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_3
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 511
+        width: 151
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b52a759a5fa10ae0800000000000000
+      internalID: -1584792790267976270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_4
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 511
+        width: 153
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1820d80da80afb030800000000000000
+      internalID: 3512702752437109377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_5
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 767
+        width: 155
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bab6ca85ba4f2ece0800000000000000
+      internalID: -1377269519257670741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_6
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 511
+        width: 176
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6d86d681039b5fc90800000000000000
+      internalID: -7136594418279290666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_7
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 767
+        width: 155
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a03a84ab1df0d4360800000000000000
+      internalID: 7155392776409490186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_8
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 511
+        width: 195
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5539770d83dd69e0800000000000000
+      internalID: -1626411287741647526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_9
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 511
+        width: 176
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b7f0fc617c2b57e20800000000000000
+      internalID: 3347778466170736507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_10
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 153
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bc0d99acb8cf3a10800000000000000
+      internalID: 1891451081143946417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_11
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 255
+        width: 155
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ead54fc4f0906cb0800000000000000
+      internalID: -4872735415690994973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_12
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 255
+        width: 155
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a416cb6537f7b6b0800000000000000
+      internalID: -5280480229255146332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_13
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 0
+        width: 151
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9b7a700853c8e0b0800000000000000
+      internalID: -5699090545704797284
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_14
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 0
+        width: 153
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0645c4cf949b73d80800000000000000
+      internalID: -8270938463226014624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_15
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 255
+        width: 155
+        height: 252
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41fbc718102c1ef00800000000000000
+      internalID: 1144409092052008724
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_16
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 0
+        width: 176
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfb886a1d1b2bf020800000000000000
+      internalID: 2376540632365173757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_17
+      rect:
+        serializedVersion: 2
+        x: 817
+        y: 255
+        width: 155
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66994ecf4de9b1f20800000000000000
+      internalID: 3394481381766895974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_18
+      rect:
+        serializedVersion: 2
+        x: 1055
+        y: 0
+        width: 195
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 482086e2881ae26c0800000000000000
+      internalID: -4166214999004937596
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: anim_pants_19
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 0
+        width: 176
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30fd13a388b14d320800000000000000
+      internalID: 2581718758295985923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      anim_pants_0: 690858856857582602
+      anim_pants_1: 6143696155299228165
+      anim_pants_10: 1891451081143946417
+      anim_pants_11: -4872735415690994973
+      anim_pants_12: -5280480229255146332
+      anim_pants_13: -5699090545704797284
+      anim_pants_14: -8270938463226014624
+      anim_pants_15: 1144409092052008724
+      anim_pants_16: 2376540632365173757
+      anim_pants_17: 3394481381766895974
+      anim_pants_18: -4166214999004937596
+      anim_pants_19: 2581718758295985923
+      anim_pants_2: 1992616865753804413
+      anim_pants_3: -1584792790267976270
+      anim_pants_4: 3512702752437109377
+      anim_pants_5: -1377269519257670741
+      anim_pants_6: -7136594418279290666
+      anim_pants_7: 7155392776409490186
+      anim_pants_8: -1626411287741647526
+      anim_pants_9: 3347778466170736507
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

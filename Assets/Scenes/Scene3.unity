@@ -119,6 +119,68 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &73047439
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 7019236056486910988, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_Name
+      value: Orbe
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547404498069992757, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 14.696308
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547404498069992757, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -12.393503
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547404498069992757, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547404498069992757, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547404498069992757, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547404498069992757, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547404498069992757, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547404498069992757, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547404498069992757, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7547404498069992757, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 83878a4509b44a145bff72f69ac77996, type: 3}
+--- !u!1 &246316914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5736035063391481817, guid: 5219dea83c6255b47975403ba9e8f673, type: 3}
+  m_PrefabInstance: {fileID: 1633378519}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &511487264
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -433,6 +495,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 518226744980878163, guid: 678a1a324ea04264eb3eb008469790ab, type: 3}
+      propertyPath: m_Name
+      value: Ground
+      objectReference: {fileID: 0}
     - target: {fileID: 5276333952700564505, guid: 678a1a324ea04264eb3eb008469790ab, type: 3}
       propertyPath: m_TileAssetArray.Array.size
       value: 11
@@ -650,6 +716,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3612754758684734572, guid: 5219dea83c6255b47975403ba9e8f673, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896341431306569961, guid: 5219dea83c6255b47975403ba9e8f673, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5736035063391481817, guid: 5219dea83c6255b47975403ba9e8f673, type: 3}
       propertyPath: m_Name
       value: PlayerGameJam
@@ -657,13 +731,108 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5736035063391481817, guid: 5219dea83c6255b47975403ba9e8f673, type: 3}
+      insertIndex: 6
+      addedObject: {fileID: 1633378527}
   m_SourcePrefab: {fileID: 100100000, guid: 5219dea83c6255b47975403ba9e8f673, type: 3}
 --- !u!4 &1633378520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1532377447729012285, guid: 5219dea83c6255b47975403ba9e8f673, type: 3}
   m_PrefabInstance: {fileID: 1633378519}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1633378527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 246316914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84f7a1fa42a7bb643bf7272f05b87235, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementAction:
+    m_Name: Movement
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: e389c8f9-ff15-4fd3-9e3f-176f51454958
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 4d10430c-c034-4c54-ac05-d7dd0dd5f258
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 28ed64c3-9ec5-4d16-a04c-53baf971a794
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 21f87596-2b99-425a-a63b-d1d1df6acc24
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    - m_Name: left
+      m_Id: b5d98ba0-274d-49ff-87b6-7b521895b664
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    - m_Name: right
+      m_Id: b776ed63-0256-40f8-9dbe-dccb3e122119
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    m_Flags: 0
+  jumpAction:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: cec03423-ab83-47c0-83fe-7e337f5f3e7c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: e788d499-c540-40ad-b076-84f5407fbb80
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    m_Flags: 0
+  maxSpeed: 10
+  acceleration: 1
+  deceleration: 0.8
+  jumpForce: 30
+  maxFallSpeed: 10
+  gravity: 2
+  levitate_gravity: -0.15
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckOffset: 0.1
+  levitatin: 0
+  collide_ground: 0
+  velocity: {x: 0, y: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -673,3 +842,4 @@ SceneRoots:
   - {fileID: 1271005773}
   - {fileID: 511487264}
   - {fileID: 1094640185}
+  - {fileID: 73047439}
