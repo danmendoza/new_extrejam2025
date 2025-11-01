@@ -1,6 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum AnimationState
+{
+    StateV0,
+    StateV1,
+    StateV2
+}
+
 
 public class GameManager : MonoBehaviour
 {

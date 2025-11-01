@@ -17,6 +17,8 @@ public class Key : MonoBehaviour
                 // Cambiar la variable hasKey a true
                 player.hasKey = true;
                 Debug.Log("El jugador ahora tiene la llave.");
+                GameManager.Instance.PrintHello();
+                Destroy(gameObject);
             }
             else
             {
@@ -24,8 +26,7 @@ public class Key : MonoBehaviour
             }
 
             // Buscar el GameManager y llamar a su método
-            GameManager.Instance.PrintHello();
-            Destroy(gameObject);
+            
         }
     }
 }
