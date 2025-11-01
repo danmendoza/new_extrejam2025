@@ -16,17 +16,19 @@ public class AnimatorControllerGJ : MonoBehaviour
 
     public string animator_action_trigger_name;
 
+    public bool hasKey;
+
     void Start()
     {
         animator = GetComponent<Animator>(); //gets the animator component
         spriteRenderer = GetComponent<SpriteRenderer>();  //gets the sprite renderer component
+        hasKey = false;
     }
 
     void Update()
     {
         float horizontal = Input.GetAxisRaw("Horizontal"); //gets horizontal input
         float vertical = Input.GetAxisRaw("Vertical");     //gets vertical input
-        Debug.Log(horizontal);
 
 /*
         float horizontal = Keyboard.current.aKey.isPressed ? -1 :
