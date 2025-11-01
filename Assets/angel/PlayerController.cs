@@ -34,11 +34,11 @@ public class PlayerController : MonoBehaviour
     private bool jumpInput = false;
     private bool touch_powerup = false;
     public bool levitatin = false;
-    public bool levitatin_down = false;
     public bool collide_ground = false;
+    private Vector2 direction = new Vector2(1.0f, 1.0f);
 
 
-    private Vector2 velocity = Vector2.zero;
+    public Vector2 velocity = Vector2.zero;
 
     private void Awake()
     {
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        transform.position = new Vector3(0.0f, 1.0f, 0.0f);
+        //transform.position = new Vector3(1.0f, 1.0f, 0.0f);
     }
 
     void OnEnable()
@@ -85,40 +85,27 @@ public class PlayerController : MonoBehaviour
         
         if (is_grounded)
         {
-            levitatin_down = false;
             m_rigidbody2D.gravityScale = gravity;
             //Debug.Log("jumpable");
             if (jumpInput) // Aplica salto
             {
                 velocity.y = jumpForce;
                 //Debug.Log("salto");
-                //m_rigidbody2D.AddForce(transform.up * jumpForce, ForceMode2D.Impulse);
-            }
-            else 
-            {
             }
         } 
-        else // Aplica gravedad
+        else if(!levitatin)
         {
-            if(levitatin) return;
-            if(levitatin_down)
-            {
-                m_rigidbody2D.gravityScale = -1.0f * levitate_gravity;
-                //levitatin_down = false;
-                return;
-            }
             velocity.y -= gravity;
             velocity.y = velocity.y < -maxFallSpeed ? -maxFallSpeed : velocity.y;
         }
 
         if (touch_powerup) // Forzar salto
         {
-
-            velocity.y = 0;
-            m_rigidbody2D.linearVelocity = velocity;
-            m_rigidbody2D.gravityScale = levitate_gravity;
+            //velocity.y = velocity.y + 5.0f;
+            
+            StopAllCoroutines();
             StartCoroutine(levitate(1));
-            return;
+            //m_rigidbody2D.AddForce(direction * jumpForce, ForceMode2D.Impulse);
         }
 
         m_rigidbody2D.linearVelocity = velocity;
@@ -182,10 +169,13 @@ public class PlayerController : MonoBehaviour
 
     IEnumerator levitate(int seconds)
     {
+        
+        velocity.y = 4;
+        m_rigidbody2D.gravityScale = levitate_gravity;
         levitatin = true;
         yield return new WaitForSeconds(seconds);
+        m_rigidbody2D.gravityScale = gravity;
         levitatin = false;
-        levitatin_down = true;
         yield break;
     }
 }
