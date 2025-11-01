@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="TitleVisualElement" style="flex-grow: 1; background-color: rgb(255, 176, 0);" />
+    <ui:VisualElement name="ButtonsStart" style="flex-grow: 1; justify-content: space-around; flex-direction: column; background-color: rgb(0, 0, 0); flex-wrap: nowrap; padding-top: 0; margin-top: 10px; margin-right: 10px; margin-bottom: 10px; margin-left: 10px; opacity: 1; align-content: center; padding-right: 0; padding-bottom: 0; padding-left: 0; align-items: flex-start;">
+        <ui:Button text="START" name="ButtonStart" style="align-self: center; flex-grow: 0; flex-shrink: 0;" />
+    </ui:VisualElement>
+</ui:UXML>
