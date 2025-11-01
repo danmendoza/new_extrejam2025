@@ -9,13 +9,14 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D m_rigidbody2D = null;
     BoxCollider2D m_boxCollider2D = null;
     Animator m_animator = null;
+    SpriteRenderer m_spriteRenderer = null;
 
     [SerializeField]
     InputAction movementAction;
     [SerializeField]
     InputAction jumpAction;
 
-    public float maxSpeed = 3.0f;
+    public float maxSpeed = 5.0f;
     [Range(0.0f, 1.0f)]
     public float acceleration = 1.8f;
     [Range(0.0f, 1.0f)]
@@ -37,14 +38,22 @@ public class PlayerController : MonoBehaviour
     public bool collide_ground = false;
     private Vector2 direction = new Vector2(1.0f, 1.0f);
 
+    public bool candleZoneToggle = false;
+    public float candleZoneTimer = 10.0f;
+    public float candleZoneDelay = 3.0f;
+    public Vector3 initPosition;
+    private Vector3 displaceLeft = new Vector3(-2.0f, 0.0f, 0.0f);
+    private Vector3 displaceRight = new Vector3(2.0f, 0.0f, 0.0f);
+
 
     public Vector2 velocity = Vector2.zero;
 
     private void Awake()
     {
         m_rigidbody2D = GetComponent<Rigidbody2D>();
-        m_boxCollider2D = GetComponent<BoxCollider2D>();  
+        m_boxCollider2D = GetComponent<BoxCollider2D>();
         m_animator = GetComponent<Animator>();
+        m_spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Start()
@@ -76,13 +85,15 @@ public class PlayerController : MonoBehaviour
 
         if (movementInput.x != 0.0f) // Acelera
         {
-            velocity.x = Mathf.Lerp(velocity.x, Mathf.Sign(movementInput.x) * maxSpeed, acceleration);
+            float sign = Mathf.Sign(movementInput.x);
+            if (candleZoneToggle) sign = -sign;
+            velocity.x = Mathf.Lerp(velocity.x, sign * maxSpeed, acceleration);
         }
         else // Desacelera
         {
             velocity.x = Mathf.Lerp(velocity.x, 0.0f, deceleration);
         }
-        
+
         if (is_grounded)
         {
             m_rigidbody2D.gravityScale = gravity;
@@ -92,8 +103,8 @@ public class PlayerController : MonoBehaviour
                 velocity.y = jumpForce;
                 //Debug.Log("salto");
             }
-        } 
-        else if(!levitatin)
+        }
+        else if (!levitatin)
         {
             velocity.y -= gravity;
             velocity.y = velocity.y < -maxFallSpeed ? -maxFallSpeed : velocity.y;
@@ -102,7 +113,7 @@ public class PlayerController : MonoBehaviour
         if (touch_powerup) // Forzar salto
         {
             //velocity.y = velocity.y + 5.0f;
-            
+
             StopAllCoroutines();
             StartCoroutine(levitate(1));
             //m_rigidbody2D.AddForce(direction * jumpForce, ForceMode2D.Impulse);
@@ -114,15 +125,33 @@ public class PlayerController : MonoBehaviour
         ConsumeInput();
     }
 
-    private void CheckInput() 
+    private void CheckInput()
     {
         movementInput = movementAction.ReadValue<Vector2>();
         jumpInput = jumpAction.triggered | jumpInput;
     }
 
-    private void ConsumeInput() 
+    private void ConsumeInput()
     {
         jumpInput = false;
+    }
+
+    private void ToggleCandleStatus()
+    {
+        if (candleZoneToggle)
+        {
+            // Llegas a vela destino, vuelves a rojo y paras corrutinas
+            StopAllCoroutines();
+            candleZoneToggle = false;
+            m_spriteRenderer.color = Color.red;
+        } else
+        {
+            // Sales de vela origen, guardas posicion y empiezas corrutina
+            initPosition = gameObject.transform.position;
+            m_spriteRenderer.color = Color.orange;
+            StartCoroutine(delayedToggle(candleZoneDelay));
+            StartCoroutine(candleManager(candleZoneTimer + candleZoneDelay));
+        }
     }
 
     // private bool GroundCheck() 
@@ -137,23 +166,32 @@ public class PlayerController : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.tag == "orbe")
+        if (collider.gameObject.tag == "orbe")
         {
             touch_powerup = true;
         }
+        if (collider.gameObject.tag == "vela")
+        {
+            ToggleCandleStatus();
+        }
+
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if(collider.gameObject.tag == "orbe")
+        if (collider.gameObject.tag == "orbe")
         {
             touch_powerup = false;
         }
+        // if (collider.gameObject.tag == "vela")
+        // {
+        //     ToggleCandleStatus();
+        // }
     }
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.gameObject.name == "Ground")
+        if (collision.collider.gameObject.name == "Ground")
         {
             collide_ground = true;
         }
@@ -161,21 +199,44 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.collider.gameObject.name == "Ground")
+        if (collision.collider.gameObject.name == "Ground")
         {
             collide_ground = false;
         }
     }
 
+    void returnToFirstCandle(Vector3 position, Vector3 offset)
+    {
+        // Salir artificialmente de la zona de velas
+        // Anular el toggle, teleport a la zona position (+offset para no pisar la vela)
+        candleZoneToggle = !candleZoneToggle;
+        this.transform.position = position + offset;
+        m_spriteRenderer.color = Color.red;
+    }
+
     IEnumerator levitate(int seconds)
     {
-        
         velocity.y = 4;
         m_rigidbody2D.gravityScale = levitate_gravity;
         levitatin = true;
         yield return new WaitForSeconds(seconds);
         m_rigidbody2D.gravityScale = gravity;
         levitatin = false;
+        yield break;
+    }
+
+    IEnumerator candleManager(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        returnToFirstCandle(initPosition, displaceLeft);
+        yield break;
+    }
+
+    IEnumerator delayedToggle(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        m_spriteRenderer.color = Color.blue;
+        candleZoneToggle = !candleZoneToggle;
         yield break;
     }
 }
