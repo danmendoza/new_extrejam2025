@@ -90,7 +90,6 @@ public class PlayerController : MonoBehaviour
 
         if (animController.hasPants)
         {
-
             maxSpeed = maxSpeedPants;
         }
 

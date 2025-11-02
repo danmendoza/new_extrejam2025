@@ -16,6 +16,9 @@ public class PlayerControllerTMP : MonoBehaviour
     InputAction jumpAction;
 
     public float maxSpeed = 3.0f;
+
+    public float maxSpeedPants = 10.0f;
+
     [Range(0.0f, 1.0f)]
     public float acceleration = 1.8f;
     [Range(0.0f, 1.0f)]
@@ -39,7 +42,7 @@ public class PlayerControllerTMP : MonoBehaviour
 
     private AnimatorControllerGJ animController;
 
-     public bool candleZoneToggle = false;
+    public bool candleZoneToggle = false;
     public float candleZoneTimer = 10.0f;
     public float candleZoneDelay = 3.0f;
     public Vector3 initPosition;
@@ -59,7 +62,7 @@ public class PlayerControllerTMP : MonoBehaviour
 
     private void Start()
     {
-        //transform.position = new Vector3(1.0f, 1.0f, 0.0f);
+        maxSpeedPants = maxSpeed * 1.8f;
     }
 
     void OnEnable()
@@ -83,6 +86,11 @@ public class PlayerControllerTMP : MonoBehaviour
     {
         bool is_grounded = GroundCheck();
 
+        if (animController.hasPants)
+        {
+            maxSpeed = maxSpeedPants;
+        }
+
         if (movementInput.x != 0.0f) // Acelera
         {
             float sign = Mathf.Sign(movementInput.x);
@@ -94,10 +102,6 @@ public class PlayerControllerTMP : MonoBehaviour
             velocity.x = Mathf.Lerp(velocity.x, 0.0f, deceleration);
         }
 
-        if (animController.isOnStairs && movementInput.y != 0)
-        {
-            velocity.y = Mathf.Lerp(velocity.y, Mathf.Sign(movementInput.y) * maxSpeed, acceleration);
-        }
 
         if (is_grounded)
         {
@@ -115,6 +119,11 @@ public class PlayerControllerTMP : MonoBehaviour
         {
             velocity.y -= gravity;
             velocity.y = velocity.y < -maxFallSpeed ? -maxFallSpeed : velocity.y;
+        }
+
+        if (animController.isOnStairs && animController.hasGloves && movementInput.y != 0)
+        {
+            velocity.y = Mathf.Lerp(velocity.y, Mathf.Sign(movementInput.y) * maxSpeed, acceleration);
         }
 
         if (touch_powerup) // Forzar salto
@@ -136,7 +145,11 @@ public class PlayerControllerTMP : MonoBehaviour
     private void CheckInput()
     {
         movementInput = movementAction.ReadValue<Vector2>();
-        jumpInput = jumpAction.triggered | jumpInput;
+        if (animController.hasPants)
+        {
+            Debug.Log("jumping");
+            jumpInput = jumpAction.triggered | jumpInput;
+        }
     }
 
     private void ConsumeInput()
@@ -151,9 +164,11 @@ public class PlayerControllerTMP : MonoBehaviour
         var collide = false;
         foreach (var c in colliders)
         {
-            if (c.name == "Ground")
+            Debug.Log($"GroundCheck detectó colisión con: {c.tag} (Layer: {LayerMask.LayerToName(c.gameObject.layer)})");
+
+            if (c.tag == "Ground")
             {
-                collide |= true;
+                collide = true;
             }
         }
         return collide;
@@ -194,7 +209,7 @@ public class PlayerControllerTMP : MonoBehaviour
         candleZoneToggle = !candleZoneToggle;
         this.transform.position = position + offset;
     }
-    
+
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "orbe")
@@ -228,7 +243,7 @@ public class PlayerControllerTMP : MonoBehaviour
         yield break;
     }
 
-        IEnumerator candleManager(float seconds)
+    IEnumerator candleManager(float seconds)
     {
         yield return new WaitForSeconds(seconds);
         returnToFirstCandle(initPosition, displaceLeft);

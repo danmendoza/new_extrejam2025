@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 4896341431306569961}
   - component: {fileID: 8796668170121945247}
   - component: {fileID: 9012658130901701890}
+  - component: {fileID: 7893182605106150423}
   m_Layer: 0
   m_Name: PlayerGameJam
   m_TagString: Player
@@ -218,7 +219,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5736035063391481817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84f7a1fa42a7bb643bf7272f05b87235, type: 3}
   m_Name: 
@@ -290,6 +291,7 @@ MonoBehaviour:
       m_Flags: 0
     m_Flags: 0
   maxSpeed: 15
+  maxSpeedPants: 10
   acceleration: 1
   deceleration: 0.8
   jumpForce: 20
@@ -299,7 +301,104 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 0
-  groundCheckOffset: 0.1
+  groundCheckOffset: 0.142
+  levitatin: 0
+  collide_ground: 0
+  candleZoneToggle: 0
+  candleZoneTimer: 10
+  candleZoneDelay: 3
+  initPosition: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0}
+--- !u!114 &7893182605106150423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5736035063391481817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921af2862682a964fb221a76fa8e9a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementAction:
+    m_Name: Movement
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 5cd809d6-9fe8-408c-81ef-8cde740d7a49
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: acab6353-4b9f-4970-9d13-5aaef71a2a96
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 164e563f-8a12-45f6-a9eb-563d810baf05
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 4dd02e9c-cbc1-49ac-8cef-380a250220a3
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 12dfbea4-67db-4a99-a172-5c0827811b06
+      m_Path: <Keyboard>/a
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 7cea5bc0-dac7-4349-b9f1-5def5ecdec09
+      m_Path: <Keyboard>/d
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    m_Flags: 0
+  jumpAction:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c5a9fc14-8453-4c26-8930-b35ec0d9d0e4
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 3cbcd563-1241-4340-ba1a-86f24684fc31
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    m_Flags: 0
+  maxSpeed: 30
+  maxSpeedPants: 10
+  acceleration: 1
+  deceleration: 0.8
+  jumpForce: 30
+  maxFallSpeed: 15
+  gravity: 1
+  levitate_gravity: -0.15
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckOffset: 1.098
   levitatin: 0
   collide_ground: 0
   candleZoneToggle: 0
