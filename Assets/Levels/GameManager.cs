@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     private void CleanPersistentObjects()
     {
         // Buscar todos los GameObjects de la escena persistente
-        GameObject[] allObjects = FindObjectsOfType<GameObject>(true);
+        GameObject[] allObjects = FindObjectsByType<GameObject>(FindObjectsSortMode.None);
 
         foreach (var obj in allObjects)
         {

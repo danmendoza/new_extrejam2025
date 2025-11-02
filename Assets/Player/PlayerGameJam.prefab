@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3612754758684734572}
   - component: {fileID: 4896341431306569961}
   - component: {fileID: 8796668170121945247}
+  - component: {fileID: 2421893435183685472}
   m_Layer: 0
   m_Name: PlayerGameJam
   m_TagString: Player
@@ -224,3 +225,99 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.76, y: 2.2}
   m_EdgeRadius: 0
+--- !u!114 &2421893435183685472
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5736035063391481817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 921af2862682a964fb221a76fa8e9a8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementAction:
+    m_Name: Movement
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ef5c19b2-706b-424a-b6c7-a592e3e9fd71
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 2D Vector
+      m_Id: 93465931-53d7-45a0-b565-72eeda55e74b
+      m_Path: 2DVector
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 4
+    - m_Name: up
+      m_Id: 3a664efe-7c50-48ae-983b-3e085ad2d7e6
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    - m_Name: down
+      m_Id: 5077fb7d-3436-4388-b0bd-44fd857f4f3f
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    - m_Name: left
+      m_Id: 4e6e8cd2-5bbf-4cab-ba49-d72214c58541
+      m_Path: <Keyboard>/leftArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    - m_Name: right
+      m_Id: 1023633b-846c-4fca-96f9-562ac878f89b
+      m_Path: <Keyboard>/rightArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Movement
+      m_Flags: 8
+    m_Flags: 0
+  jumpAction:
+    m_Name: Jump
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: c01d6bd0-adcc-48a5-ad09-f4b65582a646
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 394aaf0e-56de-4572-b911-36fd0db49d9a
+      m_Path: <Keyboard>/space
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Jump
+      m_Flags: 0
+    m_Flags: 0
+  maxSpeed: 3
+  acceleration: 1
+  deceleration: 0.8
+  jumpForce: 5
+  maxFallSpeed: 10
+  gravity: 1
+  levitate_gravity: -0.15
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  groundCheckOffset: 1.09
+  levitatin: 0
+  collide_ground: 0
+  candleZoneToggle: 0
+  candleZoneTimer: 10
+  candleZoneDelay: 3
+  initPosition: {x: 0, y: 0, z: 0}
+  velocity: {x: 0, y: 0}
