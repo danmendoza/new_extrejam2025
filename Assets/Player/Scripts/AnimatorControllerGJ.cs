@@ -21,7 +21,9 @@ public class AnimatorControllerGJ : MonoBehaviour
     [Space(5)]
     public string animator_triggerv2_name = "isV2";
     [Space(5)]
-    public string animator_triggerDead_name = "isV2";
+    public string animator_triggerDead_name = "isDead";
+
+    public bool isDead;
 
     public bool hasKey;
     public bool isOnStairs;
@@ -37,6 +39,7 @@ public class AnimatorControllerGJ : MonoBehaviour
         isOnStairs = false;
         hasPants = false;
         hasGloves = false;
+        isDead = false;
     }
 
     void Update()
@@ -87,5 +90,12 @@ public class AnimatorControllerGJ : MonoBehaviour
                 Debug.LogWarning("Estado de animación no reconocido.");
                 break;
         }
+    }
+
+    public void isDeadTransitionEnded()
+    {
+        Debug.Log("Dead Transition Ended called");
+        GameManager.Instance.SpawnPlayer();
+
     }
 }

@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     InputAction jumpAction;
 
     public float maxSpeed = 5.0f;
+
+    public float maxSpeedPants = 10.0f;
     [Range(0.0f, 1.0f)]
     public float acceleration = 1.8f;
     [Range(0.0f, 1.0f)]
@@ -38,6 +40,8 @@ public class PlayerController : MonoBehaviour
     public bool collide_ground = false;
     private Vector2 direction = new Vector2(1.0f, 1.0f);
 
+    private AnimatorControllerGJ animController;
+
     public bool candleZoneToggle = false;
     public float candleZoneTimer = 10.0f;
     public float candleZoneDelay = 3.0f;
@@ -54,11 +58,13 @@ public class PlayerController : MonoBehaviour
         m_boxCollider2D = GetComponent<BoxCollider2D>();
         m_animator = GetComponent<Animator>();
         m_spriteRenderer = GetComponent<SpriteRenderer>();
+        animController = GetComponent<AnimatorControllerGJ>();
     }
 
     private void Start()
     {
         //transform.position = new Vector3(1.0f, 1.0f, 0.0f);
+        maxSpeedPants = maxSpeed * 1.8f;
     }
 
     void OnEnable()
@@ -81,6 +87,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         bool is_grounded = collide_ground;
+
+        if (animController.hasPants)
+        {
+
+            maxSpeed = maxSpeedPants;
+        }
 
         if (movementInput.x != 0.0f) // Acelera
         {
@@ -107,6 +119,13 @@ public class PlayerController : MonoBehaviour
             velocity.y = velocity.y < -maxFallSpeed ? -maxFallSpeed : velocity.y;
         }
 
+        if (animController.isOnStairs && animController.hasGloves && movementInput.y != 0)
+        {
+            velocity.y = Mathf.Lerp(velocity.y, Mathf.Sign(movementInput.y) * maxSpeed, acceleration);
+        }
+
+
+
         if (touch_powerup) // Forzar salto
         {
 
@@ -122,7 +141,10 @@ public class PlayerController : MonoBehaviour
     private void CheckInput()
     {
         movementInput = movementAction.ReadValue<Vector2>();
-        jumpInput = jumpAction.triggered | jumpInput;
+        if (animController.hasPants)
+        {
+            jumpInput = jumpAction.triggered | jumpInput;
+        }
     }
 
     private void ConsumeInput()
@@ -138,7 +160,8 @@ public class PlayerController : MonoBehaviour
             StopAllCoroutines();
             candleZoneToggle = false;
             m_spriteRenderer.color = Color.red;
-        } else
+        }
+        else
         {
             // Sales de vela origen, guardas posicion y empiezas corrutina
             initPosition = gameObject.transform.position;

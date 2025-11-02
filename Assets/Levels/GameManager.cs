@@ -25,6 +25,13 @@ public class GameManager : MonoBehaviour
         }
     }
     private static GameManager _instance;
+
+    [Header("Prefabs")]
+    public GameObject playerPrefab;
+
+    private GameObject currentPlayer;
+
+
     void Awake()
     {
         if (_instance != null && _instance != this)
@@ -38,7 +45,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        StartGame();
     }
 
     // Update is called once per frame
@@ -66,6 +73,51 @@ public class GameManager : MonoBehaviour
         CleanPersistentObjects();
         SceneManager.LoadScene(initialIndex);
 
+    }
+
+    public void StartGame()
+    {
+        SpawnPlayer();
+    }
+
+    public void SpawnPlayer()
+    {
+        if (playerPrefab == null)
+        {
+            Debug.LogError("Player prefab no asignado en el GameManager!");
+            return;
+        }
+
+        // Buscar el objeto con el tag "door"
+        GameObject door = GameObject.FindGameObjectWithTag("Door");
+        if (door == null)
+        {
+            Debug.LogError("No se encontró ningún objeto con el tag 'door' en la escena.");
+            return;
+        }
+
+        Vector3 spawnPosition = door.transform.position;
+        Quaternion spawnRotation = door.transform.rotation;
+
+        // Buscar jugador existente (por tag "Player" o referencia guardada)
+        GameObject existingPlayer = GameObject.FindGameObjectWithTag("Player");
+
+        if (existingPlayer != null)
+        {
+            Debug.Log("Jugador existente encontrado. Eliminando y recreando...");
+            Destroy(existingPlayer);
+        }
+
+        // Crear nuevo jugador
+        currentPlayer = Instantiate(playerPrefab, spawnPosition, spawnRotation);
+        var camera = GameObject.FindGameObjectWithTag("MainCamera");
+        CameraFollow2D cameraScript = camera.GetComponent<CameraFollow2D>();
+        if (cameraScript == null)
+        {
+            Debug.Log("GameManager: there is no script on Camera");
+        }
+        cameraScript.AssignTarget(currentPlayer);
+        Debug.Log("Jugador creado en posición de door: " + spawnPosition);
     }
 
     private void CleanPersistentObjects()

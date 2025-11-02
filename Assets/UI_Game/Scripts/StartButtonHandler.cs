@@ -4,9 +4,14 @@ using UnityEngine.SceneManagement;
 
 public class StartButtonHandler : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad = "NombreDeLaEscena"; // Cambia esto en el inspector
+    [SerializeField] private string sceneToLoad = "Scene3"; // Cambia esto en el inspector
 
     private Button startButton;
+
+    void Start()
+    {
+        sceneToLoad = "Scene3";
+    }
 
     void OnEnable()
     {

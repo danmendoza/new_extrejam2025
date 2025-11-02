@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class Guantes : Flotante
+public class DeathZone : MonoBehaviour
 {
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
     private void OnTriggerEnter2D(Collider2D other)
     {
         // Verifica si el objeto que entra tiene el tag "Player"
@@ -13,9 +14,8 @@ public class Guantes : Flotante
             if (playerAnimator != null)
             {
                 Debug.Log("Jugador recogió los guantes → cambiando a StateV2");
-                playerAnimator.hasGloves = true;
-                playerAnimator.transitionAnimation(AnimationState.StateV2);
-                Destroy(gameObject);
+                playerAnimator.isDead = true;
+                playerAnimator.transitionAnimation(AnimationState.StateDead);
             }
             else
             {

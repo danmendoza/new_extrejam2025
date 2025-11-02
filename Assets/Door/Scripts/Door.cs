@@ -15,8 +15,11 @@ public class Door : MonoBehaviour
 
             if (player != null)
             {
-                GameManager.Instance.ExitGame();
-                Debug.Log("El jugador ahora tiene la llave.");
+                if (player.hasKey)
+                {
+                    GameManager.Instance.ExitGame();
+                    Debug.Log("El jugador ahora tiene la llave.");
+                }
             }
             else
             {
@@ -26,8 +29,6 @@ public class Door : MonoBehaviour
 
             Debug.Log("Jugador entró en el trigger de la puerta.");
 
-            // Buscar el GameManager y llamar a su método
-            GameManager.Instance.PrintHello();
         }
     }
 }
