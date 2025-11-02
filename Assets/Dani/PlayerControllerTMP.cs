@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerTMP : MonoBehaviour
 {
     Rigidbody2D m_rigidbody2D = null;
     BoxCollider2D m_boxCollider2D = null;
