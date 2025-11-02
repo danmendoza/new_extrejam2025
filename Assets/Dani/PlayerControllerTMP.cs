@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class PlayerController : MonoBehaviour
+public class PlayerControllerTMP : MonoBehaviour
 {
     Rigidbody2D m_rigidbody2D = null;
     BoxCollider2D m_boxCollider2D = null;
@@ -38,6 +38,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 direction = new Vector2(1.0f, 1.0f);
 
     private AnimatorControllerGJ animController;
+
+     public bool candleZoneToggle = false;
+    public float candleZoneTimer = 10.0f;
+    public float candleZoneDelay = 3.0f;
+    public Vector3 initPosition;
+    private Vector3 displaceLeft = new Vector3(-2.0f, 0.0f, 0.0f);
+    private Vector3 displaceRight = new Vector3(2.0f, 0.0f, 0.0f);
 
 
     public Vector2 velocity = Vector2.zero;
@@ -78,6 +85,8 @@ public class PlayerController : MonoBehaviour
 
         if (movementInput.x != 0.0f) // Acelera
         {
+            float sign = Mathf.Sign(movementInput.x);
+            if (candleZoneToggle) sign = -sign;
             velocity.x = Mathf.Lerp(velocity.x, Mathf.Sign(movementInput.x) * maxSpeed, acceleration);
         }
         else // Desacelera
@@ -98,7 +107,7 @@ public class PlayerController : MonoBehaviour
             {
                 velocity.y = jumpForce;
                 collide_ground = false;
-                //Debug.Log("salto");
+                Debug.Log("salto");
             }
         }
 
@@ -161,13 +170,41 @@ public class PlayerController : MonoBehaviour
     }
 
 
+    private void ToggleCandleStatus()
+    {
+        if (candleZoneToggle)
+        {
+            // Llegas a vela destino, vuelves a rojo y paras corrutinas
+            StopAllCoroutines();
+            candleZoneToggle = false;
+        }
+        else
+        {
+            // Sales de vela origen, guardas posicion y empiezas corrutina
+            initPosition = gameObject.transform.position;
+            StartCoroutine(delayedToggle(candleZoneDelay));
+            StartCoroutine(candleManager(candleZoneTimer + candleZoneDelay));
+        }
+    }
 
+    void returnToFirstCandle(Vector3 position, Vector3 offset)
+    {
+        // Salir artificialmente de la zona de velas
+        // Anular el toggle, teleport a la zona position (+offset para no pisar la vela)
+        candleZoneToggle = !candleZoneToggle;
+        this.transform.position = position + offset;
+    }
+    
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "orbe")
         {
             Debug.Log("Entering orbe");
             touch_powerup = true;
+        }
+        if (collider.gameObject.tag == "vela")
+        {
+            ToggleCandleStatus();
         }
     }
 
@@ -176,23 +213,6 @@ public class PlayerController : MonoBehaviour
         if (collider.gameObject.tag == "orbe")
         {
             touch_powerup = false;
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-
-        if (collision.collider.gameObject.name == "Ground")
-        {
-            // collide_ground = true;
-        }
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.collider.gameObject.name == "Ground")
-        {
-            //collide_ground = false;
         }
     }
 
@@ -205,6 +225,20 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         m_rigidbody2D.gravityScale = gravity;
         levitatin = false;
+        yield break;
+    }
+
+        IEnumerator candleManager(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        returnToFirstCandle(initPosition, displaceLeft);
+        yield break;
+    }
+
+    IEnumerator delayedToggle(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        candleZoneToggle = !candleZoneToggle;
         yield break;
     }
 }

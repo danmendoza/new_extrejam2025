@@ -80,7 +80,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //bool is_grounded = GroundCheck();
         bool is_grounded = collide_ground;
 
         if (movementInput.x != 0.0f) // Acelera
@@ -97,11 +96,9 @@ public class PlayerController : MonoBehaviour
         if (is_grounded)
         {
             m_rigidbody2D.gravityScale = gravity;
-            //Debug.Log("jumpable");
             if (jumpInput) // Aplica salto
             {
                 velocity.y = jumpForce;
-                //Debug.Log("salto");
             }
         }
         else if (!levitatin)
@@ -112,15 +109,12 @@ public class PlayerController : MonoBehaviour
 
         if (touch_powerup) // Forzar salto
         {
-            //velocity.y = velocity.y + 5.0f;
 
             StopAllCoroutines();
             StartCoroutine(levitate(1));
-            //m_rigidbody2D.AddForce(direction * jumpForce, ForceMode2D.Impulse);
         }
 
         m_rigidbody2D.linearVelocity = velocity;
-        //m_animator.speed = velocity.x;
 
         ConsumeInput();
     }
@@ -153,16 +147,6 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(candleManager(candleZoneTimer + candleZoneDelay));
         }
     }
-
-    // private bool GroundCheck() 
-    // {
-    //     Vector3 center = m_boxCollider2D.bounds.center;
-    //     Vector3 extents = m_boxCollider2D.bounds.extents;
-
-    //     Debug.DrawRay(m_boxCollider2D.bounds.min + Vector3.down * groundCheckOffset + Vector3.right * 0.02f, Vector2.right * m_boxCollider2D.bounds.size.x * 0.96f, Color.red);
-    //     return Physics2D.Raycast(m_boxCollider2D.bounds.min + Vector3.down * groundCheckOffset + Vector3.right * 0.02f,
-    //                              Vector2.right, m_boxCollider2D.bounds.size.x * 0.96f, groundLayer);
-    // }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
