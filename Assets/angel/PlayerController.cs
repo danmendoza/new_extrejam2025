@@ -27,7 +27,7 @@ public class PlayerController : MonoBehaviour
     public float levitate_gravity = -0.15f;
 
     public LayerMask groundLayer;
-    [Range(0.0f, 1.0f)]
+    [Range(0.0f, 2.0f)]
     public float groundCheckOffset = 0.1f;
 
     private Vector2 movementInput = Vector2.zero;
@@ -37,14 +37,17 @@ public class PlayerController : MonoBehaviour
     public bool collide_ground = false;
     private Vector2 direction = new Vector2(1.0f, 1.0f);
 
+    private AnimatorControllerGJ animController;
+
 
     public Vector2 velocity = Vector2.zero;
 
     private void Awake()
     {
         m_rigidbody2D = GetComponent<Rigidbody2D>();
-        m_boxCollider2D = GetComponent<BoxCollider2D>();  
+        m_boxCollider2D = GetComponent<BoxCollider2D>();
         m_animator = GetComponent<Animator>();
+        animController = GetComponent<AnimatorControllerGJ>();
     }
 
     private void Start()
@@ -71,8 +74,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //bool is_grounded = GroundCheck();
-        bool is_grounded = collide_ground;
+        bool is_grounded = GroundCheck();
 
         if (movementInput.x != 0.0f) // Acelera
         {
@@ -82,7 +84,12 @@ public class PlayerController : MonoBehaviour
         {
             velocity.x = Mathf.Lerp(velocity.x, 0.0f, deceleration);
         }
-        
+
+        if (animController.isOnStairs && movementInput.y != 0)
+        {
+            velocity.y = Mathf.Lerp(velocity.y, Mathf.Sign(movementInput.y) * maxSpeed, acceleration);
+        }
+
         if (is_grounded)
         {
             m_rigidbody2D.gravityScale = gravity;
@@ -90,10 +97,12 @@ public class PlayerController : MonoBehaviour
             if (jumpInput) // Aplica salto
             {
                 velocity.y = jumpForce;
+                collide_ground = false;
                 //Debug.Log("salto");
             }
-        } 
-        else if(!levitatin)
+        }
+
+        if (!levitatin)
         {
             velocity.y -= gravity;
             velocity.y = velocity.y < -maxFallSpeed ? -maxFallSpeed : velocity.y;
@@ -102,7 +111,8 @@ public class PlayerController : MonoBehaviour
         if (touch_powerup) // Forzar salto
         {
             //velocity.y = velocity.y + 5.0f;
-            
+
+            collide_ground = false;
             StopAllCoroutines();
             StartCoroutine(levitate(1));
             //m_rigidbody2D.AddForce(direction * jumpForce, ForceMode2D.Impulse);
@@ -114,38 +124,56 @@ public class PlayerController : MonoBehaviour
         ConsumeInput();
     }
 
-    private void CheckInput() 
+    private void CheckInput()
     {
         movementInput = movementAction.ReadValue<Vector2>();
         jumpInput = jumpAction.triggered | jumpInput;
     }
 
-    private void ConsumeInput() 
+    private void ConsumeInput()
     {
         jumpInput = false;
     }
 
-    // private bool GroundCheck() 
-    // {
-    //     Vector3 center = m_boxCollider2D.bounds.center;
-    //     Vector3 extents = m_boxCollider2D.bounds.extents;
+    private bool GroundCheck()
+    {
+        Vector3 checkPoint = transform.position + Vector3.down * groundCheckOffset;
+        var colliders = Physics2D.OverlapCircleAll(checkPoint, 0.2f);
+        var collide = false;
+        foreach (var c in colliders)
+        {
+            if (c.name == "Ground")
+            {
+                collide |= true;
+            }
+        }
+        return collide;
+    }
 
-    //     Debug.DrawRay(m_boxCollider2D.bounds.min + Vector3.down * groundCheckOffset + Vector3.right * 0.02f, Vector2.right * m_boxCollider2D.bounds.size.x * 0.96f, Color.red);
-    //     return Physics2D.Raycast(m_boxCollider2D.bounds.min + Vector3.down * groundCheckOffset + Vector3.right * 0.02f,
-    //                              Vector2.right, m_boxCollider2D.bounds.size.x * 0.96f, groundLayer);
-    // }
+
+    private void OnDrawGizmos()
+    {
+
+        Vector3 checkPoint = transform.position + Vector3.down * groundCheckOffset;
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawWireSphere(checkPoint, 0.15f);
+    }
+
+
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.gameObject.tag == "orbe")
+        if (collider.gameObject.tag == "orbe")
         {
+            Debug.Log("Entering orbe");
             touch_powerup = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D collider)
     {
-        if(collider.gameObject.tag == "orbe")
+        if (collider.gameObject.tag == "orbe")
         {
             touch_powerup = false;
         }
@@ -153,23 +181,24 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.collider.gameObject.name == "Ground")
+
+        if (collision.collider.gameObject.name == "Ground")
         {
-            collide_ground = true;
+            // collide_ground = true;
         }
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.collider.gameObject.name == "Ground")
+        if (collision.collider.gameObject.name == "Ground")
         {
-            collide_ground = false;
+            //collide_ground = false;
         }
     }
 
     IEnumerator levitate(int seconds)
     {
-        
+
         velocity.y = 4;
         m_rigidbody2D.gravityScale = levitate_gravity;
         levitatin = true;

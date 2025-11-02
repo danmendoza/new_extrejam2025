@@ -16,22 +16,19 @@ public class Stair : MonoBehaviour
             if (player != null)
             {
                 player.isOnStairs = true;
-                Debug.Log("El jugador ahora tiene la llave.");
             }
             else
             {
                 Debug.LogWarning("No se encontró el componente PlayerController en el objeto con tag 'Player'.");
             }
 
-
-            Debug.Log("Jugador entró en el trigger de la puerta.");
-
             // Buscar el GameManager y llamar a su método
             GameManager.Instance.PrintHello();
         }
     }
 
-    private void OnTriggerExit2D(Collider2D other){
+    private void OnTriggerExit2D(Collider2D other)
+    {
         if (other.CompareTag("Player"))
         {
             AnimatorControllerGJ player = other.GetComponent<AnimatorControllerGJ>();

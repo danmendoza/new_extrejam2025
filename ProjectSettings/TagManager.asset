@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Key
   - Door
+  - orbe
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
   - 

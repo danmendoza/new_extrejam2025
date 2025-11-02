@@ -5,26 +5,30 @@ public enum AnimationState
 {
     StateV0,
     StateV1,
-    StateV2
+    StateV2,
+    StateDead
 }
 
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance 
+    public static GameManager Instance
     {
         get
+        {
+            if (_instance == null)
             {
-                if(_instance==null){
-                    GameObject go = new GameObject("GameManager");
-                    _instance = go.AddComponent<GameManager>();
-                }
-                return _instance;
+                GameObject go = new GameObject("GameManager");
+                _instance = go.AddComponent<GameManager>();
             }
+            return _instance;
+        }
     }
     private static GameManager _instance;
-    void Awake(){
-        if(_instance != null &&_instance != this){
+    void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
             Destroy(gameObject);
             return;
         }
@@ -34,16 +38,17 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    public void PrintHello(){
+    public void PrintHello()
+    {
         Debug.Log("evento trigger");
     }
 
@@ -60,7 +65,7 @@ public class GameManager : MonoBehaviour
         int initialIndex = 0;
         CleanPersistentObjects();
         SceneManager.LoadScene(initialIndex);
- 
+
     }
 
     private void CleanPersistentObjects()
@@ -82,5 +87,5 @@ public class GameManager : MonoBehaviour
         }
     }
 
-   
+
 }

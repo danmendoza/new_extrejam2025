@@ -32,7 +32,7 @@ public class Orbe : Flotante
 
             if (playerMovement != null)
             {
-                playerMovement.ApplyBounce();
+                //playerMovement.ApplyBounce();
                 // o directamente (más limpio):
                 // playerAnimator.transitionAnimation(AnimationState.StateV1);
             }
