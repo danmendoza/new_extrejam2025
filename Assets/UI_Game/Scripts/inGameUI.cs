@@ -71,6 +71,8 @@ public class inGameUI : MonoBehaviour
 
     void OnExitClicked()
     {
+        GameManager.Instance.ExitGame();
+        /*
         Debug.Log("Exiting!");
         Debug.LogWarning("Clicking exit");
         Debug.Log("Scene counts: " + SceneManager.sceneCount);
@@ -81,18 +83,7 @@ public class inGameUI : MonoBehaviour
         Debug.Log("The current scene index: " + currentIndex);
         int initialIndex = 0;
         SceneManager.LoadScene(initialIndex);
-            /*
-            int previousIndex = currentIndex - 1;
-
-            if (previousIndex >= 0)
-            {
-                SceneManager.LoadScene(previousIndex);
-            }
-            else
-            {
-                Debug.LogWarning("No hay escena anterior para cargar.");
-            }*/
- 
+ */
     }
 
     void OnDisable()

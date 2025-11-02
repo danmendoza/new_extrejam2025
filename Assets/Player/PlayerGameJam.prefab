@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8796668170121945247}
   m_Layer: 0
   m_Name: PlayerGameJam
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -148,12 +148,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5736035063391481817}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f6686931c2e9aa44fa810e127df45936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 20
+  bounceForce: 10
 --- !u!114 &4896341431306569961
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,10 +167,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 695077e07c55d594ba475871e0e5a142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator_x_axis_name: 
-  animator_y_axis_name: 
-  animator_ismoving_bool_name: 
-  animator_action_trigger_name: 
+  animator_x_axis_name: x_axis
+  animator_y_axis_name: y_axis
+  animator_ismoving_bool_name: isMoving
+  animator_action_trigger_name: isAction
+  animator_triggerv1_name: isV1
+  animator_triggerv2_name: isV2
+  animator_triggerDead_name: isDead
+  hasKey: 0
+  isOnStairs: 0
+  hasPants: 0
+  hasGloves: 0
 --- !u!61 &8796668170121945247
 BoxCollider2D:
   m_ObjectHideFlags: 0

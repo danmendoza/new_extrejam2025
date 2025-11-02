@@ -15,13 +15,20 @@ public class PlayerMovementGJ : MonoBehaviour
 
     private Vector2 movement; // Stores the current movement vector
 
+    private AnimatorControllerGJ animController;
+
+    private float originalGravity;
+    
+    public float bounceForce = 10.0f;
+
     /// <summary>
     /// Called before the first frame. Initializes components.
     /// </summary>
     void Start()
     {
         rb = GetComponent<Rigidbody2D>(); //gets rigidbody
-       
+        animController = GetComponent<AnimatorControllerGJ>();
+        originalGravity = rb.gravityScale;
     }
 
     /// <summary>
@@ -31,17 +38,26 @@ public class PlayerMovementGJ : MonoBehaviour
     {
         // Get input
         // Get keyboard input using the new Input System
-        /*
-        movement.x = Keyboard.current.aKey.isPressed ? -1 :
-                   Keyboard.current.dKey.isPressed ? 1 : 0;
-        movement.y = Keyboard.current.sKey.isPressed ? -1 :
-                   Keyboard.current.wKey.isPressed ? 1 : 0;
-                   */
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            ApplyBounce();
+        }
 
-        movement.x = Input.GetAxisRaw("Horizontal"); // -1 (izquierda), 1 (derecha)
-        movement.y = Input.GetAxisRaw("Vertical");   // -1 (abajo), 1 (arriba)
+        //movement.x = Input.GetAxisRaw("Horizontal"); // -1 (izquierda), 1 (derecha)
+        if(animController.isOnStairs){
+            movement.y = Input.GetAxisRaw("Vertical");   // -1 (abajo), 1 (arriba)
+            rb.gravityScale = 0f;
+        }
+        else{
+            movement.y = 0;
+            rb.gravityScale = originalGravity;
+        }
         
+        movement.x = Input.GetAxisRaw("Horizontal"); // -1 (izquierda), 1 (derecha)
+   
         movement = movement.normalized; // Normalize movement so diagonal movement isn't faster
+
+        
         
     }
 
@@ -51,6 +67,20 @@ public class PlayerMovementGJ : MonoBehaviour
     void FixedUpdate()
     {
         
-        rb.linearVelocity = movement * moveSpeed; // Apply movement to Rigidbody2D
+        rb.linearVelocity += movement * moveSpeed; // Apply movement to Rigidbody2D
+    }
+
+    public void ApplyBounce()
+    {
+        Debug.Log("APPLYING BOUNCE");
+        // Calcula la dirección a 45 grados (derecha arriba por defecto)
+        // Si quieres que vaya hacia la izquierda, usa Vector2(-1, 1)
+        Vector2 bounceDirection = new Vector2(1f, 1f).normalized;
+        
+        // Aplica la velocidad directamente
+        rb.linearVelocity = bounceDirection * bounceForce;
+        
+        // Alternativa: Usar AddForce para un impulso instantáneo
+        rb.AddForce(bounceDirection * bounceForce, ForceMode2D.Impulse);
     }
 }
